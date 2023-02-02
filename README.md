@@ -77,6 +77,11 @@ Keep in mind that you should refer to this analysis to create the different spit
 
 ![This is an image](/home/images/ExploratoryDataAnalysis1.png)
 
+![This is an image](/home/animation.gif)
+
+![This is an image](/home/animation.gif)
+
+
 
 ### Create the training - validation splits
 In the class, we talked about cross-validation and the importance of creating meaningful training and validation splits. For this project, you will have to create your own training and validation sets using the files located in `/home/workspace/data/waymo`. The `split` function in the `create_splits.py` file does the following:
