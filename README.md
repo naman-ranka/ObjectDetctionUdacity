@@ -79,7 +79,7 @@ Keep in mind that you should refer to this analysis to create the different spit
 
 ![This is an image](/home/animation.gif)
 
-![This is an image](/home/animation.gif)
+
 
 
 
