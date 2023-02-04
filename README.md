@@ -3,11 +3,14 @@
 ![This is an image](/home/animation.gif)
 
 ### Project overview
-This section should contain a brief description of the project and what we are trying to achieve. Why is object detection such an important component of self driving car systems?
+
+Any autonomous driving system must be able to detect its surroundings for it to function. The use of object detection algorithms gives cars the ability to perceive their surroundings and detect nearby items including pedestrians, cars, traffic signs, and barriers. Not only are object detection algorithms employed in perception, but they are also used in localization and tracking tasks.
 
 In this project, we create an object detection model that can classify and detect - cars, pedestrians and cyclists from the camera input. 
+
 First step of the poject is to understand the data we are working with. We do this in the [exploratory data analysis](/Exploratory%20Data%20Analysis.ipynb) notebook. We explore the given dataset by ploting random images. The distribution of different classes and also distribution of day versus night images have been plotted. 
-The second step is to create a object detection model. This is achieved by a machine learning method called transfer learning, where we choose a pre trained model from Tf Object Detection API [model zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md) and train it on their own data set. I have trained my model three times for around a collective of 50,000 steps. The results of the model's performance are discussed below.
+
+The second step is to create a object detection model. This is achieved by a machine learning method called transfer learning, where we choose a pre trained model from Tf Object Detection API [model zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md) and train it on our own data set. I have trained my model four times for around a collective of 50,000 steps. The results of the model's performance are discussed below.
 
 
 
