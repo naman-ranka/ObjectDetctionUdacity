@@ -159,20 +159,26 @@ This section should contain a brief description of the steps to follow to run th
 ### Dataset
 #### Dataset analysis
 Dataset analysis is done in [Exporatory Data Analysis.ipynb](/Exploratory%20Data%20Analysis.ipynb) notebook.
+
 - **20 random images are displayed.**
+
 This is done to understand what kind of data we are working with.
 Analysis - Images present in the dataset are of size-**640,640,3** (RGB).
 
 ![This is an image](/home/images/ExploratoryDataAnalysis.png)
 
+
 - **Distribution of classes in the given dataset.**
+
 Analysis - Images mostly contain cars.Pedestians are present in about 20% of the given dataset. No of cyclist in the given dataset is extremely low and traing a model to detect cyclist from this dataset will be challenging.
 
 ![This is an image](/home/images/ExploratoryDataAnalysis1.png)
 
 
 - **Disribution of Day vs Night images.**
+
 Analysis - 90% of images are bright (day) and 10% are dim (night) 
+
 ![This is an image](/home/images/ExploratoryDataAnalysis2.png)
 
 
@@ -181,8 +187,162 @@ Analysis - 90% of images are bright (day) and 10% are dim (night)
 
 
 ### Training
+
 #### Reference experiment
 This section should detail the results of the reference experiment. It should includes training metrics and a detailed explanation of the algorithm's performances.
+
+Pipeline file - [/home/pipeline_files/pipline_try1.config](/home/pipeline_files/pipeline_try1.config)
+
+- ***Optimizer*** - momentum optimizer
+- ***Initial learing rate*** - 0.13
+- ***No of steps*** - 5000
+
+```
+data_augmentation_options {
+    random_horizontal_flip {
+    	probability:0.01
+    }
+}
+data_augmentation_options {
+	random_adjust_brightness{
+    	max_delta :0.2
+    }	
+}
+data_augmentation_options {
+    random_crop_image {
+      min_object_covered: 4
+      min_aspect_ratio: 0.75
+      max_aspect_ratio: 3.0
+      min_area: 0.8
+      max_area: 1.0
+      overlap_thresh: 0.3
+    }
+}    
+```
+
+![This is an image](/home/images/try1_loss.png)
+
+![This is an image](/home/images/try1_precision.png)
+
+![This is an image](/home/images/try1_recall.png)
+
+
+
+
+### Experiment 2
+
+Pipeline file - [/home/pipeline_files/pipline_try2.config](/home/pipeline_files/pipeline_try2.config)
+
+- ***Optimizer*** - adam optimizer
+- ***Initial learing rate*** - 0.0002  
+- ***No of steps*** - 5000
+
+```
+  data_augmentation_options {
+	random_adjust_brightness{
+    	max_delta :0.1
+    }	
+  }
+```
+
+![This is an image](/home/images/try2_loss.png)
+
+![This is an image](/home/images/try2_precision.png)
+
+![This is an image](/home/images/try2_recall.png)
+
+
+
+### Experiment 3
+
+Pipeline file - [/home/pipeline_files/pipline_try3.config](/home/pipeline_files/pipeline_try3.config)
+
+- ***Optimizer*** - adam optimizer
+- ***Initial learing rate*** - 0.0002 
+- ***No of steps*** - 5000
+
+```
+  data_augmentation_options {
+	random_adjust_brightness{
+    	max_delta :0.1
+    }	
+  }
+ 
+ data_augmentation_options {
+    random_crop_image {
+      min_object_covered: 4
+      min_aspect_ratio: 0.75
+      max_aspect_ratio: 3.0
+      min_area: 0.8
+      max_area: 1.0
+      overlap_thresh: 0.3
+    }
+  }    
+
+data_augmentation_options {
+    random_adjust_contrast{
+    	min_delta: 0.8
+        max_delta: 1.25
+    }
+  }
+data_augmentation_options {
+    random_adjust_saturation{
+    	min_delta: 0.8
+        max_delta: 1.25
+    }
+  }
+```
+
+![This is an image](/home/images/try3_loss.png)
+
+![This is an image](/home/images/try3_precision.png)
+
+![This is an image](/home/images/try3_recall.png)
+
+
+
+
+
+### Experiment 4
+
+Pipeline file - [/home/pipeline_files/pipline_try4.config](/home/pipeline_files/pipeline_try4.config)
+
+- ***Optimizer*** - adam optimizer
+- ***Initial learing rate*** - 0.0001 
+- ***No of steps*** - 40000
+
+```
+  data_augmentation_options {
+    random_horizontal_flip {
+    	probability:0.01
+    }
+  }    
+  data_augmentation_options {
+	random_adjust_brightness{
+    	max_delta :0.1
+    }	
+  data_augmentation_options {
+    random_adjust_contrast{
+    	min_delta: 0.1
+        max_delta: 0.3
+    }
+  }
+  data_augmentation_options {
+    random_adjust_saturation{
+    	min_delta: 0.1
+        max_delta: 0.3
+    }
+  }
+```
+
+
+
+![This is an image](/home/images/try4_loss.png)
+
+![This is an image](/home/images/try4_precision.png)
+
+![This is an image](/home/images/try4_recall.png)
+
 
 #### Improve on the reference
 This section should highlight the different strategies you adopted to improve your model. It should contain relevant figures and details of your findings.
