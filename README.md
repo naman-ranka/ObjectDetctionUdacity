@@ -154,6 +154,10 @@ python inference_video.py --labelmap_path label_map.pbtxt --model_path experimen
 ### Project overview
 This section should contain a brief description of the project and what we are trying to achieve. Why is object detection such an important component of self driving car systems?
 
+In this poject we create a object detection model that classify and detect cars, pedestaians and cyclist from the camera(or image) input.
+First step is to understand the data we are working with so we do this in ExploratoryDataAnalysis
+We achieve this by a machine learning method called transfer learning. Where we choose a pre trained model from tensorflow's object detection library zoo and train it on our own dataset(open waymo dataset).I have trained my model three times for around 50000 steps of batch size two.
+
 ### Set up
 This section should contain a brief description of the steps to follow to run the code for this repository.
 
