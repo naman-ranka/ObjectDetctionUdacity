@@ -108,7 +108,32 @@ Analysis - 90% of images are bright (day) and 10% are dim (night)
 ### Training
 
 #### Reference experiment
-This section should detail the results of the reference experiment. It should includes training metrics and a detailed explanation of the algorithm's performances.
+
+Pipeline file - [/home/experiments/reference/pipeline_new.config](/home/experiments/reference/pipeline_new.config)
+
+- ***Optimizer*** - momentum optimizer
+- ***Initial learing rate*** - 0.025
+- ***No of steps*** - 5000
+
+
+#### Results - [Tensorboard](https://tensorboard.dev/experiment/ZjrqXmN6TjybEbM6oTaHxA/)
+
+- **Loss**
+
+![This is an image](/home/images/reference_loss.png)
+
+
+#### Improvemets on the reference
+
+To improve the perfomance of our model **four experemints** were carried out and the result was a Object Detection Model that can detect and classify cars from a image with a good precesion value.Check out the animation of the final model [here](/home/experiments/try4/animation_try4_segment-11918003324473417938_1400_000_1420_000_with_camera_labels.gif).
+
+The following startegies were used:
+- **Tranfer Learning** approach was used in consecutive experiments i.e. the checkpoint for new experiment was used from the previous trained model instead of checkpoint of pre-tained model(ssd_resnet). Thus the knowlede gained from the previois experiment was used in training process of the next experiment.This resulted in continous **total loss** reduction throughout experiments.This is shown in the results shown below.
+- **Adam optimizer** was used instead of momentum optimizer.
+- The training process was carried out for a combined steps of **50000**.
+- Different augmentaions were used - random_horizontal_flip,random_adjust_brightness,random_crop_image,random_adjust_contrast,random_adjust_saturation.
+- Fewer augmentations were used in initial experemints so that the model could find the direction to minimum of cost function easily.This resulted in reduction of total loss of training dataset.Augmentations were then increased in last few experiments which resulted in reuction of eval total loss.
+### Experiment 1
 
 Pipeline file - [/home/pipeline_files/pipline_try1.config](/home/pipeline_files/pipeline_try1.config)
 
@@ -304,5 +329,4 @@ Pipeline file - [/home/pipeline_files/pipline_try4.config](/home/pipeline_files/
 ![Animation](/home/experiments/try4/animation_try4_segment-11918003324473417938_1400_000_1420_000_with_camera_labels.gif)
 
 
-#### Improve on the reference
-This section should highlight the different strategies you adopted to improve your model. It should contain relevant figures and details of your findings.
+
