@@ -41,7 +41,7 @@ pip install requirements.txt
 
 - Edit config file
 ```
-python edit_config.py --train_dir /home/workspace/data/train/ --eval_dir /home/data/val/ --batch_size 2 --checkpoint /home/experiments/pretrained_model/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/checkpoint/ckpt-0 --label_map /home/experiments/label_map.pbtxt
+python edit_config.py --train_dir /home/data/train/ --eval_dir /home/data/val/ --batch_size 2 --checkpoint /home/experiments/pretrained_model/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/checkpoint/ckpt-0 --label_map /home/experiments/label_map.pbtxt
 ```
 Here you can change --checkpoint path based on the checkpoint you want to start training your model from.
 
@@ -152,6 +152,10 @@ data_augmentation_options {
 
 ![This is an image](/home/images/try1_recall.png)
 
+- **animation**
+
+![Animation](/home/experiments/try1/animation_try1_segment-11918003324473417938_1400_000_1420_000_with_camera_labels.gif)
+
 
 
 
@@ -184,6 +188,9 @@ Pipeline file - [/home/pipeline_files/pipline_try2.config](/home/pipeline_files/
 
 ![This is an image](/home/images/try2_recall.png)
 
+- **animation**
+
+![Animation](/home/experiments/try2/animation_try2_segment-11918003324473417938_1400_000_1420_000_with_camera_labels.gif)
 
 
 ### Experiment 3
@@ -240,6 +247,10 @@ data_augmentation_options {
 
 ![This is an image](/home/images/try3_recall.png)
 
+- **animation**
+
+![Animation](/home/experiments/try3/animation_try3_segment-11918003324473417938_1400_000_1420_000_with_camera_labels.gif)
+
 
 
 ### Experiment 4
@@ -288,6 +299,9 @@ Pipeline file - [/home/pipeline_files/pipline_try4.config](/home/pipeline_files/
 
 ![This is an image](/home/images/try4_recall.png)
 
+- **animation**
+
+![Animation](/home/experiments/try4/animation_try4_segment-11918003324473417938_1400_000_1420_000_with_camera_labels.gif)
 
 
 #### Improve on the reference
