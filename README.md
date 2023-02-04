@@ -219,10 +219,17 @@ data_augmentation_options {
     }
 }    
 ```
+#### Results - [Tensorboard](https://tensorboard.dev/experiment/nWNlC3ecQhyBMcvmf3wspQ/)
+
+- **Loss**
 
 ![This is an image](/home/images/try1_loss.png)
 
+- **Precision**
+
 ![This is an image](/home/images/try1_precision.png)
+
+- **Recall**
 
 ![This is an image](/home/images/try1_recall.png)
 
@@ -244,10 +251,17 @@ Pipeline file - [/home/pipeline_files/pipline_try2.config](/home/pipeline_files/
     }	
   }
 ```
+#### Results - [Tensorboard](https://tensorboard.dev/experiment/nsWOiNa8Qo6EqeON6qOi8w/)
+
+- **Loss**
 
 ![This is an image](/home/images/try2_loss.png)
 
+- **Precision**
+
 ![This is an image](/home/images/try2_precision.png)
+
+- **Recall**
 
 ![This is an image](/home/images/try2_recall.png)
 
@@ -293,13 +307,19 @@ data_augmentation_options {
   }
 ```
 
+#### Results - [Tensorboard](https://tensorboard.dev/experiment/alXdD06jTQWPIREp9YqO9w/)
+
+- **Loss**
+
 ![This is an image](/home/images/try3_loss.png)
+
+- **Precision**
 
 ![This is an image](/home/images/try3_precision.png)
 
+- **Recall**
+
 ![This is an image](/home/images/try3_recall.png)
-
-
 
 
 
@@ -335,13 +355,20 @@ Pipeline file - [/home/pipeline_files/pipline_try4.config](/home/pipeline_files/
   }
 ```
 
+#### Results - [Tensorboard](https://tensorboard.dev/experiment/EP56OknySQeA8QHJGeEMBw/)
 
+- **Loss**
 
 ![This is an image](/home/images/try4_loss.png)
 
+- **Precision**
+
 ![This is an image](/home/images/try4_precision.png)
 
+- **Recall**
+
 ![This is an image](/home/images/try4_recall.png)
+
 
 
 #### Improve on the reference
