@@ -154,18 +154,36 @@ python inference_video.py --labelmap_path label_map.pbtxt --model_path experimen
 ### Project overview
 This section should contain a brief description of the project and what we are trying to achieve. Why is object detection such an important component of self driving car systems?
 
-In this poject we create a object detection model that classify and detect cars, pedestaians and cyclist from the camera(or image) input.
-First step is to understand the data we are working with so we do this in ExploratoryDataAnalysis
-We achieve this by a machine learning method called transfer learning. Where we choose a pre trained model from tensorflow's object detection library zoo and train it on our own dataset(open waymo dataset).I have trained my model three times for around 50000 steps of batch size two.
+In this project, we create an object detection model that can classify and detect - cars, pedestrians and cyclists from the camera input. 
+First step of the poject is to understand the data we are working with. We do this in the [exploratory data analysis](/Exploratory%20Data%20Analysis.ipynb) notebook. We explore the given dataset by ploting random images. The distribution of different classes and also distribution of day versus night images have been plotted. 
+The second step is to create a object detection model. This is achieved by a machine learning method called transfer learning, where we choose a pre trained model from Tf Object Detection API [model zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md) and train it on their own data set. I have trained my model three times for around a collective of 50,000 steps. The results of the model's performance are discussed below.
 
 ### Set up
 This section should contain a brief description of the steps to follow to run the code for this repository.
 
 ### Dataset
 #### Dataset analysis
-This section should contain a quantitative and qualitative description of the dataset. It should include images, charts and other visualizations.
-#### Cross validation
-This section should detail the cross validation strategy and justify your approach.
+Dataset analysis is done in [Exporatory Data Analysis.ipynb](/Exploratory%20Data%20Analysis.ipynb) notebook.
+- **20 random images are displayed.**
+This is done to understand what kind of data we are working with.
+Analysis - Images present in the dataset are of size-**640,640,3** (RGB).
+
+![This is an image](/home/images/ExploratoryDataAnalysis.png)
+
+- **Distribution of classes in the given dataset.**
+Analysis - Images mostly contain cars.Pedestians are present in about 20% of the given dataset. No of cyclist in the given dataset is extremely low and traing a model to detect cyclist from this dataset will be challenging.
+
+![This is an image](/home/images/ExploratoryDataAnalysis1.png)
+
+
+- **Disribution of Day vs Night images.**
+Analysis - 90% of images are bright (day) and 10% are dim (night) 
+![This is an image](/home/images/ExploratoryDataAnalysis2.png)
+
+
+
+
+
 
 ### Training
 #### Reference experiment
