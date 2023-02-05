@@ -12,7 +12,7 @@ from object_detection.utils.config_util import get_configs_from_pipeline_file
 from object_detection.utils.label_map_util import create_category_index_from_labelmap
 from object_detection.utils import visualization_utils as viz_utils
 
-from utils1 import get_module_logger
+from utils import get_module_logger
 
 
 def main(labelmap_path, model_path, tf_record_path, config_path, output_path):
@@ -20,7 +20,7 @@ def main(labelmap_path, model_path, tf_record_path, config_path, output_path):
     Use a model and a tf record file and create a mp4 video
     args:
     - labelmap_path [str]: path to labelmap file
-    - model_path [str]: path to exported model 
+    - model_path [str]: path to exported model
     - tf_record_path [str]: path to tf record file to visualize
     - config_path [str]: path to config file
     - output_path [str]: path to mp4 file
@@ -55,21 +55,22 @@ def main(labelmap_path, model_path, tf_record_path, config_path, output_path):
     for idx, batch in enumerate(dataset):
         if idx % 50:
             logger.info(f'Step: {idx}')
-        # add new axis and feed into model 
+        # add new axis and feed into model
         input_tensor = batch['image']
         image_np = input_tensor.numpy().astype(np.uint8)
         input_tensor = input_tensor[tf.newaxis, ...]
 
         detections = detect_fn(input_tensor)
-        
+
         # tensor -> numpy arr, remove one dimensions
         num_detections = int(detections.pop('num_detections'))
         detections = {key: value[0, ...].numpy()
-                    for key, value in detections.items()}
+                      for key, value in detections.items()}
         detections['num_detections'] = num_detections
 
         # detection_classes should be ints.
-        detections['detection_classes'] = detections['detection_classes'].astype(np.int64)
+        detections['detection_classes'] = detections['detection_classes'].astype(
+            np.int64)
 
         image_np_with_detections = image_np.copy()
         viz_utils.visualize_boxes_and_labels_on_image_array(
@@ -83,47 +84,50 @@ def main(labelmap_path, model_path, tf_record_path, config_path, output_path):
             min_score_thresh=.60,
             agnostic_mode=False)
         images.append(image_np_with_detections)
-        cv2.imshow("result",image_np_with_detections)
+        cv2.imshow("result", image_np_with_detections)
         cv2.waitKey(100)
-        count= count+1
-       
-    
+        count = count + 1
+
     # now we can create the animation
     f = plt.figure()
-    f.subplots_adjust(left=0, bottom=0, right=1, top=1, wspace=None, hspace=None)
+    f.subplots_adjust(
+        left=0,
+        bottom=0,
+        right=1,
+        top=1,
+        wspace=None,
+        hspace=None)
     ax = plt.subplot(111)
     ax.axis('off')
     im_obj = ax.imshow(images[0])
-	
 
     def animate(idx):
         image = images[idx]
         im_obj.set_data(image)
-	
-        
-    anim = animation.FuncAnimation(f, animate, frames=count-1)
+
+    anim = animation.FuncAnimation(f, animate, frames=count - 1)
     anim.save(output_path, fps=5, dpi=300)
 
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
     logger = get_module_logger(__name__)
 
     parser = argparse.ArgumentParser(description='Create video')
     parser.add_argument('--labelmap_path', required=True, type=str,
-                help='path to the label map')
+                        help='path to the label map')
     parser.add_argument('--model_path', required=True, type=str,
                         help='path to the saved model folder')
     parser.add_argument('--tf_record_path', required=True, type=str,
                         help='path to the tf record file')
     parser.add_argument('--config_path', required=False, type=str,
-                        default='pipeline.config', 
+                        default='pipeline.config',
                         help='path to the config file')
-    parser.add_argument('--output_path', required=False, type=str, 
-                        default='animation.mp4', 
+    parser.add_argument('--output_path', required=False, type=str,
+                        default='animation.mp4',
                         help='path of the saved file')
     args = parser.parse_args()
-    main(args.labelmap_path, 
-         args.model_path, 
-         args.tf_record_path, 
-         args.config_path, 
+    main(args.labelmap_path,
+         args.model_path,
+         args.tf_record_path,
+         args.config_path,
          args.output_path)
